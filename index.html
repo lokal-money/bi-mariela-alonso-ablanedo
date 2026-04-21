@@ -724,7 +724,7 @@ input[type=date]::-webkit-calendar-picker-indicator{filter:invert(0.7);cursor:po
 
 <script>
 // ── RAW DATA ─────────────────────────────────────────────────
-let RAW = [{"date":"2026-04-13","hour":6,"dow":"Monday","transaction_status":"CONFIRMED","transaction_amount":800.0,"total_fee_amount":23.92,"net_amount_to_merchant":772.2528,"card_type":"VISA","issuing_bank":"VISA","merchant_fee_percentage":2.99,"card_class":"Cr\u00e9dito","card_entry_mode":NaN,"salesperson_name":NaN,"terminal_serial_number":NaN},{"date":"2026-04-12","hour":6,"dow":"Sunday","transaction_status":"CANCELLED","transaction_amount":800.0,"total_fee_amount":NaN,"net_amount_to_merchant":800.0,"card_type":"VISA","issuing_bank":"VISA","merchant_fee_percentage":0.0,"card_class":"Cr\u00e9dito","card_entry_mode":NaN,"salesperson_name":NaN,"terminal_serial_number":NaN},{"date":"2026-03-12","hour":10,"dow":"Thursday","transaction_status":"CONFIRMED","transaction_amount":800.0,"total_fee_amount":20.0,"net_amount_to_merchant":776.8,"card_type":"VISA","issuing_bank":"VISA","merchant_fee_percentage":2.5,"card_class":"Cr\u00e9dito","card_entry_mode":NaN,"salesperson_name":NaN,"terminal_serial_number":NaN}]
+let RAW = [{"date":"2026-04-13","time":"06:00:36","hour":6,"dow":"Monday","transaction_status":"CONFIRMED","transaction_amount":800.0,"total_fee_amount":23.92,"net_amount_to_merchant":772.2528,"card_type":"VISA","issuing_bank":"VISA","merchant_fee_percentage":2.99,"card_class":"Cr\u00e9dito","card_entry_mode":NaN,"salesperson_name":NaN,"terminal_serial_number":NaN},{"date":"2026-04-12","time":"06:00:39","hour":6,"dow":"Sunday","transaction_status":"CANCELLED","transaction_amount":800.0,"total_fee_amount":NaN,"net_amount_to_merchant":800.0,"card_type":"VISA","issuing_bank":"VISA","merchant_fee_percentage":0.0,"card_class":"Cr\u00e9dito","card_entry_mode":NaN,"salesperson_name":NaN,"terminal_serial_number":NaN},{"date":"2026-03-12","time":"10:42:24","hour":10,"dow":"Thursday","transaction_status":"CONFIRMED","transaction_amount":800.0,"total_fee_amount":20.0,"net_amount_to_merchant":776.8,"card_type":"VISA","issuing_bank":"VISA","merchant_fee_percentage":2.5,"card_class":"Cr\u00e9dito","card_entry_mode":NaN,"salesperson_name":NaN,"terminal_serial_number":NaN}]
 let lastUpdated = null;
 let refreshTimer = null;
 let countdownTimer = null;
@@ -1568,7 +1568,7 @@ function exportExcel() {
 
   const rows = data.map(r => [
     r.date,
-    r.hour != null ? String(r.hour).padStart(2,'0') + ':00' : '',
+    r.time || (r.hour != null ? String(r.hour).padStart(2,'0') + ':00:00' : ''),
     days_es[r.dow] || r.dow || '',
     r.transaction_status || '',
     r.transaction_amount || 0,
